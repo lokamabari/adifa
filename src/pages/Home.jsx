@@ -20,8 +20,6 @@ import foodCategoryImg01 from '../assets/images/hamburger.png'
 import foodCategoryImg02 from '../assets/images/pizza.png'
 import foodCategoryImg03 from '../assets/images/bread.png'
 
-import { useState, useEffect } from 'react';
-
 const fetaureData = [
   {
     title: 'Quick Delivery',
@@ -41,35 +39,6 @@ const fetaureData = [
 ]
 
 const Home = () => {
-
-  const [category, setCategory] = useState('ALL')
-  const [allProducts, setAllproducts] = useState(products)
-
-  useEffect(() => {
-
-    if (category === 'ALL') {
-      setAllproducts(products)
-    }
-
-    if (category === 'BURGER') {
-      const fillteredProducts = products.filter(item => item.category === 'Burger')
-
-      setAllproducts(fillteredProducts)
-    }
-
-    if (category === 'PIZZA') {
-      const fillteredProducts = products.filter(item => item.category === 'Pizza')
-
-      setAllproducts(fillteredProducts)
-    }
-
-    if (category === 'BREAD') {
-      const fillteredProducts = products.filter(item => item.category === 'Bread')
-
-      setAllproducts(fillteredProducts)
-    }
-
-  },[category])
 
   return <Helmet title='Home'>
     <section>
@@ -133,39 +102,23 @@ const Home = () => {
         </Row>
       </Container>
     </section>
+    <Container>
+      <Row>
+        <Col lg='12' className=' text-center'>
+          <h2>Popular Foods</h2>
+        </Col>
 
+        <Col lg='12' >
+          <div className="food__category">
+            <button className="all__btn">All</button>
+            <button>
+              <img src="" alt="" />
+            </button>
+          </div>
+        </Col>
+      </Row>
+    </Container>
     <section>
-      <Container>
-        <Row>
-          <Col lg='12' className=' text-center' >
-            <h5>Popular Foods</h5>
-          </Col>
-
-          <Col lg='12'>
-            <div className="food__category d-flex align-items-center justify-content-center gap-4">
-              <button className="all__btn " onClick={() => setCategory('ALL')} >All</button>
-              <button className=' d-flex align-items-center gap-2' onClick={() => setCategory('BURGER')}>
-                <img src={foodCategoryImg01} alt="" />Burger
-              </button>
-              <button className='d-flex align-items-center gap-2' onClick={() => setCategory('PIZZA')}>
-                <img src={foodCategoryImg02} alt="" />Pizza
-              </button>
-              <button className='d-flex align-items-center gap-2' onClick={() => setCategory('BREAD')}>
-                <img src={foodCategoryImg03} alt="" />Bread
-              </button>
-            </div>
-          </Col>
-
-          {
-            products.map(item => (
-              <Col lg='3' md='4' key={item.id} className='mt-5'>
-                <ProductCard item={item} />
-              </Col>
-            ))
-          }
-
-        </Row>
-      </Container>
     </section>
   </Helmet>
 }
