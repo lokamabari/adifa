@@ -36,7 +36,7 @@ const fetaureData = [
     imgUrl: featureImg03,
     desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, accusantium?'
   },
-]
+];
 
 const Home = () => {
 
@@ -102,23 +102,29 @@ const Home = () => {
         </Row>
       </Container>
     </section>
-    <Container>
+    <section>
+      <Container>
       <Row>
         <Col lg='12' className=' text-center'>
           <h2>Popular Foods</h2>
         </Col>
 
         <Col lg='12' >
-          <div className="food__category">
-            <button className="all__btn">All</button>
-            <button>
-              <img src="" alt="" />
+          <div className="food__category d-flex align-items-center justify-content-center gap-4">
+            <button className="all__btn foodBtnActive">All</button>
+            <button className=' d-flex align-items-center gap-2' >
+              <img src={foodCategoryImg01} alt="" />Burger
+            </button>
+            <button className=' d-flex align-items-center gap-2'>
+              <img src={foodCategoryImg02} alt="" />Pizza
+            </button>
+            <button className=' d-flex align-items-center gap-2'>
+              <img src={foodCategoryImg03} alt="" />Bread
             </button>
           </div>
         </Col>
       </Row>
     </Container>
-    <section>
     </section>
   </Helmet>
 }
