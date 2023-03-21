@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { Container, Row, Col } from 'reactstrap';
+import React, { useState, useEffect } from 'react'
+import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import Helmet from '../components/Helmet/Helmet.js'
@@ -10,6 +10,8 @@ import '../styles/hero-section.css'
 import '../styles/home.css'
 
 import products from '../assets/fake-data/products.js'
+
+import whyImg from '../assets/images/location.png'
 
 import heroImg from '../assets/images/hero.png'
 import featureImg01 from '../assets/images/service-01.png'
@@ -44,7 +46,7 @@ const Home = () => {
   const [category, setcategory] = useState('ALL')
   const [allProducts, setAllProduct] = useState(products)
 
-  useEffect(()=>{
+  useEffect(() => {
 
     if (category === 'ALL') {
 
@@ -53,24 +55,24 @@ const Home = () => {
     }
 
     if (category === 'BURGER') {
-      const filteredProducts = products.filter((item)=> item.category === 'Burger');
-      
+      const filteredProducts = products.filter((item) => item.category === 'Burger');
+
       console.log(filteredProducts);
       setAllProduct(filteredProducts);
     }
     if (category === 'PIZZA') {
-      const filteredProducts = products.filter((item)=> item.category === 'Pizza');
+      const filteredProducts = products.filter((item) => item.category === 'Pizza');
 
       setAllProduct(filteredProducts);
     }
     if (category === 'BREAD') {
-      const filteredProducts = products.filter((item)=> item.category === 'Bread');
+      const filteredProducts = products.filter((item) => item.category === 'Bread');
 
       setAllProduct(filteredProducts);
     }
 
 
-  },[category]);
+  }, [category]);
 
   return <Helmet title='Home'>
     <section>
@@ -143,16 +145,15 @@ const Home = () => {
 
           <Col lg='12' >
             <div className="food__category d-flex align-items-center justify-content-center gap-4">
-              <button className={`all__btn ${category === 'ALL' ? 'foodBtnActive' : '' } `} onClick={()=> setcategory('ALL')} >All</button>
-              <button className={` d-flex align-items-center gap-2 ${category === 'BURGER' ? 'foodBtnActive' : '' } `} onClick={()=> setcategory('BURGER')}>
+              <button className={`all__btn ${category === 'ALL' ? 'foodBtnActive' : ''} `} onClick={() => setcategory('ALL')} >All</button>
+              <button className={` d-flex align-items-center gap-2 ${category === 'BURGER' ? 'foodBtnActive' : ''} `} onClick={() => setcategory('BURGER')}>
                 <img src={foodCategoryImg01} alt="" />Burger
               </button>
-              <button className={` d-flex align-items-center gap-2 ${category === 'PIZZA' ? 'foodBtnActive' : '' } `} onClick={()=> setcategory('PIZZA')} >
+              <button className={` d-flex align-items-center gap-2 ${category === 'PIZZA' ? 'foodBtnActive' : ''} `} onClick={() => setcategory('PIZZA')} >
                 <img src={foodCategoryImg02} alt="" />Pizza
               </button>
-              <button className={`d-flex align-items-center gap-2 ${
-                    category === "BREAD" ? "foodBtnActive" : ""
-                  } `} onClick={()=> setcategory('BREAD')}>
+              <button className={`d-flex align-items-center gap-2 ${category === "BREAD" ? "foodBtnActive" : ""
+                } `} onClick={() => setcategory('BREAD')}>
                 <img src={foodCategoryImg03} alt="" />Bread
               </button>
             </div>
@@ -161,7 +162,7 @@ const Home = () => {
           {
             allProducts.map(item => (
               <Col lg='3' md='4' className=' mt-5'>
-                <ProductCard item={item}/>
+                <ProductCard item={item} />
               </Col>
 
             ))
@@ -174,9 +175,45 @@ const Home = () => {
     <section>
       <Container>
         <Row>
-          <Col lg='6' md='6' ></Col>
-          
-          <Col lg='6' md='6' ></Col>
+          <Col lg='6' md='6' >
+            <img src={whyImg} alt="why-tasty-treat" className='w-100' />
+          </Col>
+
+          <Col lg='6' md='6' >
+            <div className="why__tasty-treat">
+              <h2 className="tasty__treat-title mb-4">Why <span>Tasty Treat?</span></h2>
+              <p className='tasty__treat-desc' >
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa illo a incidunt nihil nostrum quos! Similique, iste temporibus et adipisci maiores, voluptates quisquam nihil aliquid rem, mollitia consequatur repellat at.
+              </p>
+
+              <ListGroup className='mt-5'>
+                <ListGroupItem>
+                  <p className=' d-flex align-items-center gap-2'>
+                    <i class="ri-checkbox-circle-line"></i>Fresh and tasty foods
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, fugit?
+                  </p>
+                </ListGroupItem>
+                <ListGroupItem>
+                  <p className=' d-flex align-items-center gap-2'>
+                    <i class="ri-checkbox-circle-line"></i>Quality Support
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, fugit?
+                  </p>
+                </ListGroupItem>
+                <ListGroupItem>
+                  <p className=' d-flex align-items-center gap-2'>
+                    <i class="ri-checkbox-circle-line"></i>Order from any location
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, fugit?
+                  </p>
+                </ListGroupItem>
+              </ListGroup>
+            </div>
+          </Col>
         </Row>
       </Container>
     </section>

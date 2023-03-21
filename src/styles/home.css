@@ -40,3 +40,12 @@
     border-radius: 5px;
     color: #df2020 !important;
 }
+
+.tasty__treat-title span {
+    color: #df2020;
+}
+
+.tasty__treat-desc {
+    color: #777;
+    line-height: 28px;
+}
