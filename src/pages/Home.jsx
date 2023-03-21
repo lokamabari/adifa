@@ -47,13 +47,15 @@ const Home = () => {
   useEffect(()=>{
 
     if (category === 'ALL') {
+
+      console.log(products)
       setAllProduct(products);
     }
 
     if (category === 'BURGER') {
-      console.log('ya')
       const filteredProducts = products.filter((item)=> item.category === 'Burger');
-
+      
+      console.log(filteredProducts);
       setAllProduct(filteredProducts);
     }
     if (category === 'PIZZA') {
@@ -141,21 +143,23 @@ const Home = () => {
 
           <Col lg='12' >
             <div className="food__category d-flex align-items-center justify-content-center gap-4">
-              <button className="all__btn foodBtnActive" onClick={()=> setcategory('ALL')} >All</button>
-              <button className=' d-flex align-items-center gap-2' onClick={()=> setcategory('BURGER')}>
+              <button className={`all__btn ${category === 'ALL' ? 'foodBtnActive' : '' } `} onClick={()=> setcategory('ALL')} >All</button>
+              <button className={` d-flex align-items-center gap-2 ${category === 'BURGER' ? 'foodBtnActive' : '' } `} onClick={()=> setcategory('BURGER')}>
                 <img src={foodCategoryImg01} alt="" />Burger
               </button>
-              <button className=' d-flex align-items-center gap-2'>
+              <button className={` d-flex align-items-center gap-2 ${category === 'PIZZA' ? 'foodBtnActive' : '' } `} onClick={()=> setcategory('PIZZA')} >
                 <img src={foodCategoryImg02} alt="" />Pizza
               </button>
-              <button className=' d-flex align-items-center gap-2'>
+              <button className={`d-flex align-items-center gap-2 ${
+                    category === "BREAD" ? "foodBtnActive" : ""
+                  } `} onClick={()=> setcategory('BREAD')}>
                 <img src={foodCategoryImg03} alt="" />Bread
               </button>
             </div>
           </Col>
 
           {
-            products.map(item => (
+            allProducts.map(item => (
               <Col lg='3' md='4' className=' mt-5'>
                 <ProductCard item={item}/>
               </Col>
