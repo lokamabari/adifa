@@ -22,6 +22,8 @@ import foodCategoryImg01 from '../assets/images/hamburger.png'
 import foodCategoryImg02 from '../assets/images/pizza.png'
 import foodCategoryImg03 from '../assets/images/bread.png'
 
+import networkImg from '../assets/images/network.png'
+
 const fetaureData = [
   {
     title: 'Quick Delivery',
@@ -45,6 +47,15 @@ const Home = () => {
 
   const [category, setcategory] = useState('ALL')
   const [allProducts, setAllProduct] = useState(products)
+
+  const [hotPizza, setHotPizza] = useState([])
+
+  useEffect(() => {
+    const filteredPizza = products.filter(item => item.category === 'Pizza')
+    const slicePizza = filteredPizza.slice(0, 4)
+
+    setHotPizza(slicePizza)
+  }, [])
 
   useEffect(() => {
 
@@ -175,44 +186,69 @@ const Home = () => {
     <section>
       <Container>
         <Row>
-          <Col lg='6' md='6' >
-            <img src={whyImg} alt="why-tasty-treat" className='w-100' />
+          <Col lg='6' md='6' className=' mt-4' >
+            <img src={whyImg} alt="why-tasty-treat" className='w-100 mt-5' />
           </Col>
 
-          <Col lg='6' md='6' >
+          <Col lg='6' md='6' className=' mt-0' >
             <div className="why__tasty-treat">
               <h2 className="tasty__treat-title mb-4">Why <span>Tasty Treat?</span></h2>
-              <p className='tasty__treat-desc' >
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa illo a incidunt nihil nostrum quos! Similique, iste temporibus et adipisci maiores, voluptates quisquam nihil aliquid rem, mollitia consequatur repellat at.
-              </p>
+              <p className='tasty__treat-desc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo corporis esse earum sed, incidunt atque est deserunt perferendis ab laborum quasi dolor, eveniet ipsum? Rem a quis similique praesentium asperiores!</p>
 
-              <ListGroup className='mt-5'>
-                <ListGroupItem>
-                  <p className=' d-flex align-items-center gap-2'>
-                    <i class="ri-checkbox-circle-line"></i>Fresh and tasty foods
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, fugit?
-                  </p>
+              <ListGroup className=' mt-5'>
+                <ListGroupItem className=' border-0 ps-0' >
+                  <p className=' choose__us-title d-flex align-items-center gap-2'><i className="ri-checkbox-circle-line"></i>Fresh and tasty foods</p>
+                  <p className='choose__us-desc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae.</p>
                 </ListGroupItem>
-                <ListGroupItem>
-                  <p className=' d-flex align-items-center gap-2'>
-                    <i class="ri-checkbox-circle-line"></i>Quality Support
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, fugit?
-                  </p>
+
+                <ListGroupItem className=' border-0 ps-0'>
+                  <p className=' choose__us-title d-flex align-items-center gap-2'><i className="ri-checkbox-circle-line"></i>Quality Support</p>
+                  <p className='choose__us-desc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae.</p>
                 </ListGroupItem>
-                <ListGroupItem>
-                  <p className=' d-flex align-items-center gap-2'>
-                    <i class="ri-checkbox-circle-line"></i>Order from any location
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, fugit?
-                  </p>
+
+                <ListGroupItem className=' border-0 ps-0'>
+                  <p className='choose__us-title d-flex align-items-center gap-2'><i className="ri-checkbox-circle-line"></i>Order from any location</p>
+                  <p className='choose__us-desc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae.</p>
                 </ListGroupItem>
               </ListGroup>
             </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+
+    <section className=' pt-0' >
+      <Container>
+        <Row>
+          <Col lg='12' className=' text-center mb-5' >
+            <h2>Hot Pizza</h2>
+          </Col>
+
+          {
+            hotPizza.map(item => (
+              <Col lg='3' md='4' key={item.id} >
+                <ProductCard item={item} />
+              </Col>
+            ))
+          }
+        </Row>
+      </Container>
+    </section>
+
+    <section>
+      <Container>
+        <Row>
+          <Col lg='6' md='6'>
+            <div className='testimonial'>
+              <h5 className="testimonial__subtitle">
+                Testimonial
+              </h5>
+              <h2>What our <span>customers</span> are saying</h2>
+            </div>
+          </Col>
+
+          <Col lg='6' md='6'>
+            <img src={networkImg} alt="testimonial-img" className='w-100' />
           </Col>
         </Row>
       </Container>

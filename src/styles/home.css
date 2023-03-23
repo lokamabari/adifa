@@ -49,3 +49,16 @@
     color: #777;
     line-height: 28px;
 }
+
+.choose__us-title {
+    font-weight: 600;
+}
+
+.choose__us-title i {
+    font-weight: 500 !important;
+    color: #df2020;
+}
+
+.choose__us-desc {
+    color: #777;
+}
